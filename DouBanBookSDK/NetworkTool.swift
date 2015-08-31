@@ -46,6 +46,7 @@ class NetworkTool: NSObject {
         let parameterString = buildParams(parameter)
         
         let data = parameterString.dataUsingEncoding(NSUTF8StringEncoding)!
+    
         
         switch method {
             

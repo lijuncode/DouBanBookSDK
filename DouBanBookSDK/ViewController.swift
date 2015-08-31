@@ -10,18 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var loginbarbutton: UIBarButtonItem!
     @IBAction func loginDouBan(sender: AnyObject) {
         
-        DBSession.sharedSession.authenticateWithViewController(self, complition: { () -> () in
+        DBSession.sharedSession.authenticateWithViewController(self, success: { () -> () in
             
-            
+            self.loginbarbutton.title = DBSession.sharedSession.doubanAccount?.douban_user_name
             
         })
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        loginbarbutton.title = DBSession.sharedSession.isAuthenticated ? DBSession.sharedSession.doubanAccount?.douban_user_name : "登录豆瓣"
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -12,14 +12,19 @@ class OauthLoginViewController: UIViewController, UIWebViewDelegate {
 
     private var webView: UIWebView!
     
+    var parameter: [String: AnyObject]!
+    
     var client_id: String!
     var client_secret: String!
     var redirect_uri: String!
     
+    var complition: (() -> ())?
     
-    init(dictionary: [String: String]) {
+    init(dictionary: [String: AnyObject]) {
         
         super.init(nibName: nil, bundle: nil)
+        
+        parameter = dictionary
         
         setValuesForKeysWithDictionary(dictionary)
         
@@ -37,9 +42,7 @@ class OauthLoginViewController: UIViewController, UIWebViewDelegate {
         setWebView()
         
         loadWeb()
-        
-        
-        
+    
     }
     
     /// 设置网页视图
@@ -70,7 +73,6 @@ class OauthLoginViewController: UIViewController, UIWebViewDelegate {
         let request = NSURLRequest(URL: url!)
         
         webView.loadRequest(request)
-        
         
     }
 
@@ -107,55 +109,29 @@ class OauthLoginViewController: UIViewController, UIWebViewDelegate {
         return true
     }
     
-    /// 加载token
+    /// 获取token
     private func loadAccessToken(code: String) {
         
         let urlPath = "https://www.douban.com/service/auth2/token"
         
         let url = NSURL(string: urlPath)!
         
-        var parameter = [String : AnyObject]()
+        var parameters = parameter
+        parameters["grant_type"] = "authorization_code"
+        parameters["code"] = code
         
-        parameter["client_id"] = client_id
-        parameter["client_secret"] = client_secret
-        parameter["redirect_uri"] = redirect_uri
-        parameter["grant_type"] = "authorization_code"
-        parameter["code"] = code
-        
-        NetworkTool.sharedNetworkTool.upload(NetworkTool.HTTPMethod.POST, url: url, parameter: parameter) { (result, error) -> Void in
+        NetworkTool.sharedNetworkTool.upload(.POST, url: url, parameter: parameters) { (result, error) -> Void in
             
-            println(result)
+           DouBanAccount.doubanAccount = DouBanAccount(dictionary: result!)
+            
+            println(DouBanAccount.fetchDoubanAccount())
+            
+            self.complition?()
+            
+            self.close()
             
         }
-        
-        
-        
-//        let request = NSMutableURLRequest(URL: url)
-//        
-//        request.HTTPMethod = "POST"
-//        
-//        let parameterString = "client_id=\(client_id)&client_secret=\(client_secret)&redirect_uri=\(redirect_uri)&grant_type=authorization_code&code=\(code)"
-//        
-//        let bodyData = parameterString.dataUsingEncoding(NSUTF8StringEncoding)!
-//        
-//        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-//        
-//        let session = NSURLSession(configuration: configuration)
-//        
-//       let task = session.uploadTaskWithRequest(request, fromData: bodyData) { (data, response, error) -> Void in
-//            
-//            if data != nil && error == nil {
-//                
-//                let result = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0), error: nil) as! [String : AnyObject]
-//                
-//                println(result)
-//                
-//            }
-//            
-//        }
-//        
-//        task.resume()
-        
+
     }
     
     

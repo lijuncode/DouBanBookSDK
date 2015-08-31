@@ -14,13 +14,21 @@ class DBSession: NSObject {
     static let sharedSession = DBSession()
     
     /// 是否授权
-    var isAuthenticated: Bool?
+    var isAuthenticated: Bool = {
+
+        return DouBanAccount.fetchDoubanAccount() != nil
+    }()
+    
+    var doubanAccount: DouBanAccount? = {
+        
+        return DouBanAccount.fetchDoubanAccount()
+    }()
     
     var client_id: String?
     var client_secret: String?
     var redirect_uri: String?
     
-    static var authorization_code_parameter = [String: String]()
+    static var authorization_code_parameter = [String: AnyObject]()
     
     /// 设置参数
     class func setSharedSession(client_id: String, client_secret: String, redirect_uri: String) {
@@ -38,9 +46,11 @@ class DBSession: NSObject {
     }
    
     /// 登录、授权
-    func authenticateWithViewController(viewController: UIViewController, complition: () -> ()) {
+    func authenticateWithViewController(viewController: UIViewController, success: () -> ()) {
         
         let oauthViewController = OauthLoginViewController(dictionary:DBSession.authorization_code_parameter)
+        oauthViewController.complition = success
+        
         let navigationController = UINavigationController(rootViewController: oauthViewController)
         
         viewController.presentViewController(navigationController, animated: true, completion: nil)
