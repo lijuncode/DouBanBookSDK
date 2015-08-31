@@ -15,7 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        DBSession.setSharedSession("0ae38e5a9e00c9f720aaab0fda025de5", client_secret: "dd08aa5af88600ca", redirect_uri: "http://weibo.com/likumb")
+        
+        
         return true
     }
 

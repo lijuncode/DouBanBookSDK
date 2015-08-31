@@ -13,6 +13,10 @@
 		F4BF96561B93E4E500595D3F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4BF96551B93E4E500595D3F /* Images.xcassets */; };
 		F4BF96591B93E4E500595D3F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BF96571B93E4E500595D3F /* LaunchScreen.xib */; };
 		F4BF96651B93E4E500595D3F /* DouBanBookSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96641B93E4E500595D3F /* DouBanBookSDKTests.swift */; };
+		F4BF96701B93E5B600595D3F /* DouBanAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF966F1B93E5B600595D3F /* DouBanAccount.swift */; };
+		F4BF96721B93E8D300595D3F /* DBSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96711B93E8D300595D3F /* DBSession.swift */; };
+		F4BF96741B93EAAE00595D3F /* OauthLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96731B93EAAE00595D3F /* OauthLoginViewController.swift */; };
+		F4BF96771B93FDF900595D3F /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96761B93FDF900595D3F /* NetworkTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		F4BF965E1B93E4E500595D3F /* DouBanBookSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DouBanBookSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4BF96631B93E4E500595D3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4BF96641B93E4E500595D3F /* DouBanBookSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouBanBookSDKTests.swift; sourceTree = "<group>"; };
+		F4BF966F1B93E5B600595D3F /* DouBanAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DouBanAccount.swift; sourceTree = "<group>"; };
+		F4BF96711B93E8D300595D3F /* DBSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBSession.swift; sourceTree = "<group>"; };
+		F4BF96731B93EAAE00595D3F /* OauthLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthLoginViewController.swift; sourceTree = "<group>"; };
+		F4BF96761B93FDF900595D3F /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				F4BF964E1B93E4E500595D3F /* AppDelegate.swift */,
+				F4BF966E1B93E57700595D3F /* DouBanBookSDK */,
 				F4BF96501B93E4E500595D3F /* ViewController.swift */,
 				F4BF96521B93E4E500595D3F /* Main.storyboard */,
 				F4BF96551B93E4E500595D3F /* Images.xcassets */,
@@ -110,6 +119,17 @@
 				F4BF96631B93E4E500595D3F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4BF966E1B93E57700595D3F /* DouBanBookSDK */ = {
+			isa = PBXGroup;
+			children = (
+				F4BF966F1B93E5B600595D3F /* DouBanAccount.swift */,
+				F4BF96711B93E8D300595D3F /* DBSession.swift */,
+				F4BF96731B93EAAE00595D3F /* OauthLoginViewController.swift */,
+				F4BF96761B93FDF900595D3F /* NetworkTool.swift */,
+			);
+			name = DouBanBookSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,8 +232,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4BF96741B93EAAE00595D3F /* OauthLoginViewController.swift in Sources */,
+				F4BF96721B93E8D300595D3F /* DBSession.swift in Sources */,
 				F4BF96511B93E4E500595D3F /* ViewController.swift in Sources */,
 				F4BF964F1B93E4E500595D3F /* AppDelegate.swift in Sources */,
+				F4BF96771B93FDF900595D3F /* NetworkTool.swift in Sources */,
+				F4BF96701B93E5B600595D3F /* DouBanAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
