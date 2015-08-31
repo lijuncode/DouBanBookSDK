@@ -56,4 +56,41 @@ class DBSession: NSObject {
         viewController.presentViewController(navigationController, animated: true, completion: nil)
         
     }
+    
+    /// 创建读书笔记
+    func creatDoubanNote(note: DBAnnotation){
+        
+        // 小王子书
+        let urlPath = "https://api.douban.com/v2/book/1003078/annotations"
+        
+        let url = NSURL(string: urlPath)!
+        
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        
+        let bodyString = "content=\(note.content!)&page=\(note.page!)"
+        let data = bodyString.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+
+        configuration.HTTPAdditionalHeaders = ["Authorization": "Bearer \(doubanAccount!.access_token!)" ]
+        
+        let session = NSURLSession(configuration: configuration)
+        
+        let task = session.uploadTaskWithRequest(request, fromData: data) { (data, response, error) -> Void in
+            
+            if data != nil && error == nil {
+                let result = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0), error: nil) as! [String : AnyObject]
+                
+                let id = result["id"] as! String
+                
+                note.id = id
+                
+                println(id)
+            }
+        }
+        
+        task.resume()
+    }
+    
 }

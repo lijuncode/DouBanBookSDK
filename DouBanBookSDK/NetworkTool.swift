@@ -51,19 +51,9 @@ class NetworkTool: NSObject {
         switch method {
             
         case .POST:
-            
             request.HTTPMethod = "POST"
-            session.uploadTaskWithRequest(request, fromData: data, completionHandler: { (data , response, error) -> Void in
-              
-                if data != nil && error == nil {
-                    
-                    let result = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0), error: nil) as! [String : AnyObject]
-                    
-                    complition(result: result, error: nil)
-                }
-                
-                
-            }).resume()
+            uploadTaskWithRequest(request, fromData: data, success: complition)
+            
         default:
             break
             
@@ -71,6 +61,22 @@ class NetworkTool: NSObject {
         
     }
     
+    
+    private func uploadTaskWithRequest(request: NSURLRequest, fromData: NSData?, success: finishCallBack) {
+        
+       let task = session.uploadTaskWithRequest(request, fromData: fromData) { (data, response, error) -> Void in
+            
+            if data != nil && error == nil {
+                
+                let result = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0), error: nil) as! [String : AnyObject]
+                
+                success(result: result, error: nil)
+            }
+        }
+        
+        task.resume()
+        
+    }
     
     // 从 Alamofire 偷了三个函数
     private func buildParams(parameters: [String: AnyObject]) -> String {

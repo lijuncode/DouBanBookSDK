@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
 
+    var note: DBAnnotation?
+   
     @IBOutlet weak var loginbarbutton: UIBarButtonItem!
     @IBAction func loginDouBan(sender: AnyObject) {
         
@@ -23,10 +25,53 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         loginbarbutton.title = DBSession.sharedSession.isAuthenticated ? DBSession.sharedSession.doubanAccount?.douban_user_name : "登录豆瓣"
         
     }
-
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        
+        switch indexPath.row {
+            
+        case 0:
+            creatDoubanNote()
+            
+        case 1:
+            updateDoubanNote()
+            
+        case 2:
+            deleteDoubanNote()
+        default:
+            break
+            
+        }
+        
+    }
+    
+    func creatDoubanNote(){
+        
+        let note = DBAnnotation(content: "这是一条测试笔记，凑满15个字完工", page: "1", chapter: nil)
+        
+        self.note = note
+        
+        DBSession.sharedSession.creatDoubanNote(note)
+        
+        println("创建")
+    }
+    
+    func updateDoubanNote(){
+       
+        println("更新")
+    }
+    
+    func deleteDoubanNote(){
+        
+        println("删除")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

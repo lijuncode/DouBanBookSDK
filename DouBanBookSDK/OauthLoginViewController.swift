@@ -124,8 +124,6 @@ class OauthLoginViewController: UIViewController, UIWebViewDelegate {
             
            DouBanAccount.doubanAccount = DouBanAccount(dictionary: result!)
             
-            println(DouBanAccount.fetchDoubanAccount())
-            
             self.complition?()
             
             self.close()

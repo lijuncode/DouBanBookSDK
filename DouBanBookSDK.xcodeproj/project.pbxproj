@@ -17,6 +17,7 @@
 		F4BF96721B93E8D300595D3F /* DBSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96711B93E8D300595D3F /* DBSession.swift */; };
 		F4BF96741B93EAAE00595D3F /* OauthLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96731B93EAAE00595D3F /* OauthLoginViewController.swift */; };
 		F4BF96771B93FDF900595D3F /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96761B93FDF900595D3F /* NetworkTool.swift */; };
+		F4BF96791B94394100595D3F /* DBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96781B94394100595D3F /* DBAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		F4BF96711B93E8D300595D3F /* DBSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBSession.swift; sourceTree = "<group>"; };
 		F4BF96731B93EAAE00595D3F /* OauthLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthLoginViewController.swift; sourceTree = "<group>"; };
 		F4BF96761B93FDF900595D3F /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
+		F4BF96781B94394100595D3F /* DBAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				F4BF966F1B93E5B600595D3F /* DouBanAccount.swift */,
 				F4BF96711B93E8D300595D3F /* DBSession.swift */,
+				F4BF96781B94394100595D3F /* DBAnnotation.swift */,
 				F4BF96731B93EAAE00595D3F /* OauthLoginViewController.swift */,
 				F4BF96761B93FDF900595D3F /* NetworkTool.swift */,
 			);
@@ -237,6 +240,7 @@
 				F4BF96511B93E4E500595D3F /* ViewController.swift in Sources */,
 				F4BF964F1B93E4E500595D3F /* AppDelegate.swift in Sources */,
 				F4BF96771B93FDF900595D3F /* NetworkTool.swift in Sources */,
+				F4BF96791B94394100595D3F /* DBAnnotation.swift in Sources */,
 				F4BF96701B93E5B600595D3F /* DouBanAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
