@@ -123,7 +123,9 @@ class OauthLoginViewController: UIViewController, UIWebViewDelegate {
         NetworkTool.sharedNetworkTool.upload(.POST, url: url, parameter: parameters) { (result, error) -> Void in
             
            DouBanAccount.doubanAccount = DouBanAccount(dictionary: result!)
-            
+        
+            DBSession.sharedSession.changeAuthenticated()
+           
             self.complition?()
             
             self.close()

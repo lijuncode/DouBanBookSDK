@@ -84,7 +84,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Nyp-8G-ug5">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="2Zw-NZ-8WQ">
+                        <barButtonItem key="leftBarButtonItem" title="登录豆瓣" id="2Zw-NZ-8WQ">
                             <connections>
                                 <action selector="loginDouBan:" destination="TQV-hY-jbw" id="eQy-Hm-ju1"/>
                             </connections>

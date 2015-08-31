@@ -13,19 +13,28 @@ class ViewController: UITableViewController {
     var note: DBAnnotation?
    
     @IBOutlet weak var loginbarbutton: UIBarButtonItem!
+    
     @IBAction func loginDouBan(sender: AnyObject) {
         
-        DBSession.sharedSession.authenticateWithViewController(self, success: { () -> () in
+        if DBSession.sharedSession.isAuthenticated {
             
-            self.loginbarbutton.title = DBSession.sharedSession.doubanAccount?.douban_user_name
+            DBSession.sharedSession.unauthenticate({ () -> Void in
+                
+                self.loginbarbutton.title = "登录豆瓣"
+                
+            })
+        } else {
+        // 登录授权
+            DBSession.sharedSession.authenticateWithViewController(self, success: { () -> () in
             
-        })
-        
+                self.loginbarbutton.title = DBSession.sharedSession.doubanAccount?.douban_user_name
+            
+            })
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         loginbarbutton.title = DBSession.sharedSession.isAuthenticated ? DBSession.sharedSession.doubanAccount?.douban_user_name : "登录豆瓣"
         
     }
@@ -40,7 +49,7 @@ class ViewController: UITableViewController {
             creatDoubanNote()
             
         case 1:
-            updateDoubanNote()
+            changeDoubanNote()
             
         case 2:
             deleteDoubanNote()
@@ -53,23 +62,64 @@ class ViewController: UITableViewController {
     
     func creatDoubanNote(){
         
-        let note = DBAnnotation(content: "这是一条测试笔记，凑满15个字完工", page: "1", chapter: nil)
+        if !DBSession.sharedSession.isAuthenticated {
+            
+            presentAlert(nil, message: "请先登录豆瓣", handle: nil)
+            
+            return
+            
+        }
         
-        self.note = note
+        let note = DBAnnotation(content: "测试删除笔记，凑满15个字完工", page: "1", chapter: nil)
         
-        DBSession.sharedSession.creatDoubanNote(note)
+        // 《小王子》id
+        note.bookId = "1003078"
         
-        println("创建")
+        DBSession.sharedSession.creatDoubanNote(note, success: { (result, error) -> Void in
+            
+            let id = result!["id"] as! String
+            
+           note.id = id
+            
+            self.note = note
+            
+            self.presentAlert(nil, message: "创建成功", handle: nil)
+        })
     }
     
-    func updateDoubanNote(){
+    func changeDoubanNote(){
        
-        println("更新")
+        if note == nil {
+            presentAlert(nil, message: "先创建一条笔记", handle: nil)
+            
+            return
+        }
+        
+        note?.content = "这是一条测试修改笔记，凑满15个字完工"
+        
+        DBSession.sharedSession.changeDoubanNote(note!, success: { (result, error) -> Void in
+            
+            let id = result!["id"] as! String
+            
+            self.note!.id = id
+            
+            self.presentAlert(nil, message: "修改成功", handle: nil)
+        })
+        
     }
     
     func deleteDoubanNote(){
         
-        println("删除")
+        if note == nil {
+            presentAlert(nil, message: "先创建一条笔记", handle: nil)
+            
+            return
+        }
+        
+        DBSession.sharedSession.deleteDoubanNote(note!, success: { (result, error) -> Void in
+            self.presentAlert(nil, message: "删除成功", handle: nil)
+        })
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,4 +129,6 @@ class ViewController: UITableViewController {
 
 
 }
+
+
 

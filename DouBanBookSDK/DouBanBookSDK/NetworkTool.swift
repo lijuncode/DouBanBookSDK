@@ -18,7 +18,7 @@ class NetworkTool: NSObject {
         case POST = "POST"
         case GET = "GET"
         case PUT = "PUT"
-        case delete = "DELETE"
+        case DELETE = "DELETE"
         
     }
     
@@ -34,33 +34,59 @@ class NetworkTool: NSObject {
         super.init()
         
         configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        if DBSession.sharedSession.isAuthenticated{
+            configuration.HTTPAdditionalHeaders = ["Authorization": "Bearer \(DBSession.sharedSession.doubanAccount!.access_token!)" ]
+        }
         session = NSURLSession(configuration: configuration)
         
     }
     
     
-    func upload(method: HTTPMethod, url: NSURL, parameter: [String : AnyObject], complition: finishCallBack) {
+    func upload(method: HTTPMethod, url: NSURL, parameter: [String : AnyObject]?, complition: finishCallBack) {
         
         let request = NSMutableURLRequest(URL: url)
+        var data: NSData?
+        if parameter != nil {
+            let parameterString = buildParams(parameter!)
         
-        let parameterString = buildParams(parameter)
-        
-        let data = parameterString.dataUsingEncoding(NSUTF8StringEncoding)!
+            data = parameterString.dataUsingEncoding(NSUTF8StringEncoding)!
     
-        
+        }
         switch method {
             
         case .POST:
             request.HTTPMethod = "POST"
             uploadTaskWithRequest(request, fromData: data, success: complition)
+        case .DELETE:
+            request.HTTPMethod = "DELETE"
+            dataTaskWithRequest(request, success: complition)
             
         default:
             break
             
         }
         
+        
+        
     }
     
+    private func dataTaskWithRequest(request: NSURLRequest, success: finishCallBack) {
+        
+        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+            
+            let httpResp = response as? NSHTTPURLResponse
+            
+            if httpResp?.statusCode == 204 {
+                
+                success(result: nil, error: nil)
+            }
+            
+        })
+        
+        task.resume()
+        
+        
+    }
     
     private func uploadTaskWithRequest(request: NSURLRequest, fromData: NSData?, success: finishCallBack) {
         

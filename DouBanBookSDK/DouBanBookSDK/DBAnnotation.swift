@@ -14,6 +14,7 @@ class DBAnnotation: NSObject {
     var page: String?
     var chapter: String?
     var id: String?
+    var bookId: String?
     
     convenience init(content: String, page: String?, chapter: String?){
         

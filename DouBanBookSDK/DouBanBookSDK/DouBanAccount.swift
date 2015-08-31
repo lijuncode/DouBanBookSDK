@@ -66,8 +66,13 @@ class DouBanAccount: NSObject, NSCoding {
         return doubanAccount
     }
     
-    
-    
+    class func deleteAccount(){
+        
+        doubanAccount = nil
+        
+        NSFileManager.defaultManager().removeItemAtPath(doubanPath, error: nil)
+        
+    }
     
     /// 保存账号
     private func save(){
