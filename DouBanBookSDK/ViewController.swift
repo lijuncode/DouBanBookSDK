@@ -118,6 +118,8 @@ class ViewController: UITableViewController {
         }
         
         DBSession.sharedSession.deleteDoubanNote(note!, success: { (result, error) -> Void in
+            
+            self.note = nil
             self.presentAlert(nil, message: "删除成功", handle: nil)
         })
 
