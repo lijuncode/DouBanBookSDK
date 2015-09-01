@@ -43,6 +43,14 @@ class ViewController: UITableViewController {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
+        if !DBSession.sharedSession.isAuthenticated {
+            
+            presentAlert(nil, message: "请先登录豆瓣", handle: nil)
+            
+            return
+            
+        }
+        
         switch indexPath.row {
             
         case 0:
@@ -62,15 +70,8 @@ class ViewController: UITableViewController {
     
     func creatDoubanNote(){
         
-        if !DBSession.sharedSession.isAuthenticated {
-            
-            presentAlert(nil, message: "请先登录豆瓣", handle: nil)
-            
-            return
-            
-        }
         
-        let note = DBAnnotation(content: "测试删除笔记，凑满15个字完工", page: "1", chapter: nil)
+       let note = DBAnnotation(content: "测试删除笔记，凑满15个字完工", page: "1", chapter: nil, bookid: nil, id: nil)
         
         // 《小王子》id
         note.bookId = "1003078"

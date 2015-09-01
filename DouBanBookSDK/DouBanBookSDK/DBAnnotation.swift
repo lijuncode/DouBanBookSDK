@@ -16,14 +16,14 @@ class DBAnnotation: NSObject {
     var id: String?
     var bookId: String?
     
-    convenience init(content: String, page: String?, chapter: String?){
+    convenience init(content: String, page: String?, chapter: String?,bookid: String? ,id: String?){
         
         self.init()
-       
         self.content = content
         self.page = page
         self.chapter = chapter
-        
+        self.bookId = bookid
+        self.id = id
     }
     
     

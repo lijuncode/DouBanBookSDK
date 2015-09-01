@@ -52,13 +52,14 @@ class NetworkTool: NSObject {
             data = parameterString.dataUsingEncoding(NSUTF8StringEncoding)!
     
         }
+        
+        request.HTTPMethod = method.rawValue
+        
         switch method {
             
         case .POST:
-            request.HTTPMethod = "POST"
             uploadTaskWithRequest(request, fromData: data, success: complition)
         case .DELETE:
-            request.HTTPMethod = "DELETE"
             dataTaskWithRequest(request, success: complition)
             
         default:
@@ -66,10 +67,9 @@ class NetworkTool: NSObject {
             
         }
         
-        
-        
     }
     
+    // success的判定太死了，目前只适用于删除笔记，必须得再改进
     private func dataTaskWithRequest(request: NSURLRequest, success: finishCallBack) {
         
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
@@ -78,7 +78,10 @@ class NetworkTool: NSObject {
             
             if httpResp?.statusCode == 204 {
                 
-                success(result: nil, error: nil)
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    success(result: nil, error: nil)
+                })
+                
             }
             
         })
@@ -96,7 +99,10 @@ class NetworkTool: NSObject {
                 
                 let result = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0), error: nil) as! [String : AnyObject]
                 
-                success(result: result, error: nil)
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    success(result: result, error: nil)
+                })
+                
             }
         }
         
@@ -104,7 +110,7 @@ class NetworkTool: NSObject {
         
     }
     
-    // 从 Alamofire 偷了三个函数
+    // 从 Alamofire 偷了三个函数，目前只用了第一个
     private func buildParams(parameters: [String: AnyObject]) -> String {
         var components: [(String, String)] = []
         for key in sorted(Array(parameters.keys), <) {

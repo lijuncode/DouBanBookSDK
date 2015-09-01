@@ -25,7 +25,7 @@ class DBSession: NSObject {
     static var authorization_code_parameter = [String: AnyObject]()
     
     /// 设置参数
-    class func setSharedSession(client_id: String, client_secret: String, redirect_uri: String) {
+    class func setDoubanAPIKey(client_id: String, client_secret: String, redirect_uri: String) {
     
         authorization_code_parameter["client_id"] = client_id
         authorization_code_parameter["client_secret"] = client_secret
@@ -69,7 +69,15 @@ class DBSession: NSObject {
         var parameter = [String : AnyObject]()
         
         parameter["content"] = note.content!
-        parameter["page"] = note.page!
+        
+        if note.page != nil {
+            parameter["page"] = note.page!
+        }
+        
+        if note.chapter != nil {
+            
+            parameter["chapter"] = note.chapter!
+        }
         
         NetworkTool.sharedNetworkTool.upload(.POST, url: url, parameter: parameter, complition: success)
         
@@ -80,23 +88,24 @@ class DBSession: NSObject {
     func changeDoubanNote(note: DBAnnotation, success: successCallBack){
         
         deleteDoubanNote(note, success: { (result, error) -> Void in
-            self.creatDoubanNote(note, success: success)
+            
         })
+        
+        creatDoubanNote(note, success: success)
         
     }
     
+    /// 删除笔记
     func deleteDoubanNote(note: DBAnnotation, success: successCallBack){
         
         let urlPath = "https://api.douban.com/v2/book/annotation/\(note.id!)"
         let url = NSURL(string: urlPath)!
         
-        let request = NSMutableURLRequest(URL: url)
-        
         NetworkTool.sharedNetworkTool.upload(.DELETE, url: url, parameter: nil, complition: success)
         
     }
 
-    
+    /// 修改登录状态
     func changeAuthenticated() {
         
         isAuthenticated = DouBanAccount.fetchDoubanAccount() != nil
@@ -108,6 +117,20 @@ class DBSession: NSObject {
             
             NetworkTool.sharedNetworkTool.configuration.HTTPAdditionalHeaders = nil
         }
+        
+    }
+    
+    /// 收藏图书（在读状态）
+    func collectionBook(bookId: String, success: successCallBack){
+        
+        let urlPath = "https://api.douban.com/v2/book/\(bookId)/collection"
+        let url = NSURL(string: urlPath)!
+        
+        var parameter = [String : AnyObject]()
+        // 在读状态
+        parameter["status"] = "reading"
+        
+        NetworkTool.sharedNetworkTool.upload(.POST, url: url, parameter: parameter, complition: success)
         
     }
 

@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F452855B1B953E3A00D3ECEE /* DBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45285561B953E3A00D3ECEE /* DBAnnotation.swift */; };
+		F452855C1B953E3A00D3ECEE /* DBSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45285571B953E3A00D3ECEE /* DBSession.swift */; };
+		F452855D1B953E3A00D3ECEE /* DouBanAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45285581B953E3A00D3ECEE /* DouBanAccount.swift */; };
+		F452855E1B953E3A00D3ECEE /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45285591B953E3A00D3ECEE /* NetworkTool.swift */; };
+		F452855F1B953E3A00D3ECEE /* OauthLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F452855A1B953E3A00D3ECEE /* OauthLoginViewController.swift */; };
 		F4BF964F1B93E4E500595D3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF964E1B93E4E500595D3F /* AppDelegate.swift */; };
 		F4BF96511B93E4E500595D3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96501B93E4E500595D3F /* ViewController.swift */; };
 		F4BF96541B93E4E500595D3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4BF96521B93E4E500595D3F /* Main.storyboard */; };
 		F4BF96561B93E4E500595D3F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4BF96551B93E4E500595D3F /* Images.xcassets */; };
 		F4BF96591B93E4E500595D3F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BF96571B93E4E500595D3F /* LaunchScreen.xib */; };
 		F4BF96651B93E4E500595D3F /* DouBanBookSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96641B93E4E500595D3F /* DouBanBookSDKTests.swift */; };
-		F4BF96811B944C6F00595D3F /* DBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF967C1B944C6F00595D3F /* DBAnnotation.swift */; };
-		F4BF96821B944C6F00595D3F /* DBSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF967D1B944C6F00595D3F /* DBSession.swift */; };
-		F4BF96831B944C6F00595D3F /* DouBanAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF967E1B944C6F00595D3F /* DouBanAccount.swift */; };
-		F4BF96841B944C6F00595D3F /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF967F1B944C6F00595D3F /* NetworkTool.swift */; };
-		F4BF96851B944C6F00595D3F /* OauthLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96801B944C6F00595D3F /* OauthLoginViewController.swift */; };
 		F4BF96871B94557200595D3F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96861B94557200595D3F /* UIViewController+Alert.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +32,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F45285561B953E3A00D3ECEE /* DBAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBAnnotation.swift; sourceTree = "<group>"; };
+		F45285571B953E3A00D3ECEE /* DBSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBSession.swift; sourceTree = "<group>"; };
+		F45285581B953E3A00D3ECEE /* DouBanAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DouBanAccount.swift; sourceTree = "<group>"; };
+		F45285591B953E3A00D3ECEE /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
+		F452855A1B953E3A00D3ECEE /* OauthLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthLoginViewController.swift; sourceTree = "<group>"; };
 		F4BF96491B93E4E500595D3F /* DouBanBookSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouBanBookSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4BF964D1B93E4E500595D3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4BF964E1B93E4E500595D3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,11 +47,6 @@
 		F4BF965E1B93E4E500595D3F /* DouBanBookSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DouBanBookSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4BF96631B93E4E500595D3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4BF96641B93E4E500595D3F /* DouBanBookSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouBanBookSDKTests.swift; sourceTree = "<group>"; };
-		F4BF967C1B944C6F00595D3F /* DBAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBAnnotation.swift; sourceTree = "<group>"; };
-		F4BF967D1B944C6F00595D3F /* DBSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBSession.swift; sourceTree = "<group>"; };
-		F4BF967E1B944C6F00595D3F /* DouBanAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DouBanAccount.swift; sourceTree = "<group>"; };
-		F4BF967F1B944C6F00595D3F /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
-		F4BF96801B944C6F00595D3F /* OauthLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthLoginViewController.swift; sourceTree = "<group>"; };
 		F4BF96861B94557200595D3F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +68,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F45285551B953E3A00D3ECEE /* DouBanBookSDK */ = {
+			isa = PBXGroup;
+			children = (
+				F45285561B953E3A00D3ECEE /* DBAnnotation.swift */,
+				F45285571B953E3A00D3ECEE /* DBSession.swift */,
+				F45285581B953E3A00D3ECEE /* DouBanAccount.swift */,
+				F45285591B953E3A00D3ECEE /* NetworkTool.swift */,
+				F452855A1B953E3A00D3ECEE /* OauthLoginViewController.swift */,
+			);
+			path = DouBanBookSDK;
+			sourceTree = "<group>";
+		};
 		F4BF96401B93E4E500595D3F = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +101,7 @@
 		F4BF964B1B93E4E500595D3F /* DouBanBookSDK */ = {
 			isa = PBXGroup;
 			children = (
-				F4BF967B1B944C6F00595D3F /* DouBanBookSDK */,
+				F45285551B953E3A00D3ECEE /* DouBanBookSDK */,
 				F4BF964E1B93E4E500595D3F /* AppDelegate.swift */,
 				F4BF96501B93E4E500595D3F /* ViewController.swift */,
 				F4BF96861B94557200595D3F /* UIViewController+Alert.swift */,
@@ -124,18 +136,6 @@
 				F4BF96631B93E4E500595D3F /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F4BF967B1B944C6F00595D3F /* DouBanBookSDK */ = {
-			isa = PBXGroup;
-			children = (
-				F4BF967C1B944C6F00595D3F /* DBAnnotation.swift */,
-				F4BF967D1B944C6F00595D3F /* DBSession.swift */,
-				F4BF967E1B944C6F00595D3F /* DouBanAccount.swift */,
-				F4BF967F1B944C6F00595D3F /* NetworkTool.swift */,
-				F4BF96801B944C6F00595D3F /* OauthLoginViewController.swift */,
-			);
-			path = DouBanBookSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,13 +238,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4BF96851B944C6F00595D3F /* OauthLoginViewController.swift in Sources */,
-				F4BF96821B944C6F00595D3F /* DBSession.swift in Sources */,
+				F452855C1B953E3A00D3ECEE /* DBSession.swift in Sources */,
 				F4BF96511B93E4E500595D3F /* ViewController.swift in Sources */,
-				F4BF96811B944C6F00595D3F /* DBAnnotation.swift in Sources */,
+				F452855F1B953E3A00D3ECEE /* OauthLoginViewController.swift in Sources */,
+				F452855E1B953E3A00D3ECEE /* NetworkTool.swift in Sources */,
+				F452855D1B953E3A00D3ECEE /* DouBanAccount.swift in Sources */,
 				F4BF964F1B93E4E500595D3F /* AppDelegate.swift in Sources */,
-				F4BF96841B944C6F00595D3F /* NetworkTool.swift in Sources */,
-				F4BF96831B944C6F00595D3F /* DouBanAccount.swift in Sources */,
+				F452855B1B953E3A00D3ECEE /* DBAnnotation.swift in Sources */,
 				F4BF96871B94557200595D3F /* UIViewController+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +441,7 @@
 				F4BF966A1B93E4E500595D3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F4BF966B1B93E4E500595D3F /* Build configuration list for PBXNativeTarget "DouBanBookSDKTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +450,7 @@
 				F4BF966D1B93E4E500595D3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
