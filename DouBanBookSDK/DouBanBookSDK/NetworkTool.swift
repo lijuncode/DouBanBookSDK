@@ -42,7 +42,7 @@ class NetworkTool: NSObject {
     }
     
     
-    func upload(method: HTTPMethod, url: NSURL, parameter: [String : AnyObject]?, complition: finishCallBack) {
+    func request(method: HTTPMethod, url: NSURL, parameter: [String : AnyObject]?, successStatus: Int, complition: finishCallBack ) {
         
         let request = NSMutableURLRequest(URL: url)
         var data: NSData?
@@ -56,11 +56,13 @@ class NetworkTool: NSObject {
         request.HTTPMethod = method.rawValue
         
         switch method {
+        case .GET:
+            dataTaskWithRequest(request, successStatus: successStatus, success: complition)
             
         case .POST:
-            uploadTaskWithRequest(request, fromData: data, success: complition)
+            uploadTaskWithRequest(request, fromData: data, successStatus: successStatus, success: complition)
         case .DELETE:
-            dataTaskWithRequest(request, success: complition)
+            dataTaskWithRequest(request, successStatus: successStatus, success: complition)
             
         default:
             break
@@ -69,17 +71,20 @@ class NetworkTool: NSObject {
         
     }
     
-    // success的判定太死了，目前只适用于删除笔记，必须得再改进
-    private func dataTaskWithRequest(request: NSURLRequest, success: finishCallBack) {
+    
+    private func dataTaskWithRequest(request: NSURLRequest,successStatus: Int, success: finishCallBack) {
         
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             
             let httpResp = response as? NSHTTPURLResponse
             
-            if httpResp?.statusCode == 204 {
+            if httpResp?.statusCode == successStatus {
+                
+                let result = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0), error: nil) as? [String : AnyObject]
+                
                 
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                    success(result: nil, error: nil)
+                    success(result: result, error: nil)
                 })
                 
             }
@@ -91,19 +96,22 @@ class NetworkTool: NSObject {
         
     }
     
-    private func uploadTaskWithRequest(request: NSURLRequest, fromData: NSData?, success: finishCallBack) {
+    private func uploadTaskWithRequest(request: NSURLRequest, fromData: NSData?, successStatus: Int, success: finishCallBack) {
         
        let task = session.uploadTaskWithRequest(request, fromData: fromData) { (data, response, error) -> Void in
+        
+            let httpResp = response as? NSHTTPURLResponse
+        
+            if httpResp?.statusCode == successStatus {
             
-            if data != nil && error == nil {
-                
                 let result = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0), error: nil) as! [String : AnyObject]
-                
+            
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                     success(result: result, error: nil)
                 })
-                
+            
             }
+        
         }
         
         task.resume()

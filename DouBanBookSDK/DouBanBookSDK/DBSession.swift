@@ -79,7 +79,7 @@ class DBSession: NSObject {
             parameter["chapter"] = note.chapter!
         }
         
-        NetworkTool.sharedNetworkTool.upload(.POST, url: url, parameter: parameter, complition: success)
+        NetworkTool.sharedNetworkTool.request(.POST, url: url, parameter: parameter, successStatus: 201, complition: success)
         
         
     }
@@ -101,7 +101,18 @@ class DBSession: NSObject {
         let urlPath = "https://api.douban.com/v2/book/annotation/\(note.id!)"
         let url = NSURL(string: urlPath)!
         
-        NetworkTool.sharedNetworkTool.upload(.DELETE, url: url, parameter: nil, complition: success)
+        NetworkTool.sharedNetworkTool.request(.DELETE, url: url, parameter: nil, successStatus: 204, complition: success)
+        
+    }
+    
+    /// 获取谋篇笔记的信息
+    func fetchDoubanNote(noteId: String, success: successCallBack) {
+        
+        let urlPath = "https://api.douban.com/v2/book/annotation/\(noteId)"
+        let url = NSURL(string: urlPath)!
+        
+        NetworkTool.sharedNetworkTool.request(.GET, url: url, parameter: nil, successStatus: 200, complition: success)
+        
         
     }
 
@@ -130,7 +141,7 @@ class DBSession: NSObject {
         // 在读状态
         parameter["status"] = "reading"
         
-        NetworkTool.sharedNetworkTool.upload(.POST, url: url, parameter: parameter, complition: success)
+        NetworkTool.sharedNetworkTool.request(.POST, url: url, parameter: parameter, successStatus: 201, complition: success)
         
     }
 
