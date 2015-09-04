@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F45285661B959A4300D3ECEE /* DBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45285611B959A4300D3ECEE /* DBAnnotation.swift */; };
-		F45285671B959A4300D3ECEE /* DBSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45285621B959A4300D3ECEE /* DBSession.swift */; };
-		F45285681B959A4300D3ECEE /* DouBanAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45285631B959A4300D3ECEE /* DouBanAccount.swift */; };
-		F45285691B959A4300D3ECEE /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45285641B959A4300D3ECEE /* NetworkTool.swift */; };
-		F452856A1B959A4300D3ECEE /* OauthLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45285651B959A4300D3ECEE /* OauthLoginViewController.swift */; };
 		F4BF964F1B93E4E500595D3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF964E1B93E4E500595D3F /* AppDelegate.swift */; };
 		F4BF96511B93E4E500595D3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96501B93E4E500595D3F /* ViewController.swift */; };
 		F4BF96541B93E4E500595D3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4BF96521B93E4E500595D3F /* Main.storyboard */; };
@@ -19,6 +14,11 @@
 		F4BF96591B93E4E500595D3F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BF96571B93E4E500595D3F /* LaunchScreen.xib */; };
 		F4BF96651B93E4E500595D3F /* DouBanBookSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96641B93E4E500595D3F /* DouBanBookSDKTests.swift */; };
 		F4BF96871B94557200595D3F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF96861B94557200595D3F /* UIViewController+Alert.swift */; };
+		F4EDFDCC1B995FC10082A5E4 /* DBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EDFDC71B995FC10082A5E4 /* DBAnnotation.swift */; };
+		F4EDFDCD1B995FC10082A5E4 /* DBSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EDFDC81B995FC10082A5E4 /* DBSession.swift */; };
+		F4EDFDCE1B995FC10082A5E4 /* DouBanAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EDFDC91B995FC10082A5E4 /* DouBanAccount.swift */; };
+		F4EDFDCF1B995FC10082A5E4 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EDFDCA1B995FC10082A5E4 /* NetworkTool.swift */; };
+		F4EDFDD01B995FC10082A5E4 /* OauthLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EDFDCB1B995FC10082A5E4 /* OauthLoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,11 +32,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F45285611B959A4300D3ECEE /* DBAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBAnnotation.swift; sourceTree = "<group>"; };
-		F45285621B959A4300D3ECEE /* DBSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBSession.swift; sourceTree = "<group>"; };
-		F45285631B959A4300D3ECEE /* DouBanAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DouBanAccount.swift; sourceTree = "<group>"; };
-		F45285641B959A4300D3ECEE /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
-		F45285651B959A4300D3ECEE /* OauthLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthLoginViewController.swift; sourceTree = "<group>"; };
 		F4BF96491B93E4E500595D3F /* DouBanBookSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouBanBookSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4BF964D1B93E4E500595D3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4BF964E1B93E4E500595D3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +43,11 @@
 		F4BF96631B93E4E500595D3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4BF96641B93E4E500595D3F /* DouBanBookSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouBanBookSDKTests.swift; sourceTree = "<group>"; };
 		F4BF96861B94557200595D3F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		F4EDFDC71B995FC10082A5E4 /* DBAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBAnnotation.swift; sourceTree = "<group>"; };
+		F4EDFDC81B995FC10082A5E4 /* DBSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBSession.swift; sourceTree = "<group>"; };
+		F4EDFDC91B995FC10082A5E4 /* DouBanAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DouBanAccount.swift; sourceTree = "<group>"; };
+		F4EDFDCA1B995FC10082A5E4 /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
+		F4EDFDCB1B995FC10082A5E4 /* OauthLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthLoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,18 +68,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F45285601B959A4300D3ECEE /* DouBanBookSDK */ = {
-			isa = PBXGroup;
-			children = (
-				F45285611B959A4300D3ECEE /* DBAnnotation.swift */,
-				F45285621B959A4300D3ECEE /* DBSession.swift */,
-				F45285631B959A4300D3ECEE /* DouBanAccount.swift */,
-				F45285641B959A4300D3ECEE /* NetworkTool.swift */,
-				F45285651B959A4300D3ECEE /* OauthLoginViewController.swift */,
-			);
-			path = DouBanBookSDK;
-			sourceTree = "<group>";
-		};
 		F4BF96401B93E4E500595D3F = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +89,7 @@
 		F4BF964B1B93E4E500595D3F /* DouBanBookSDK */ = {
 			isa = PBXGroup;
 			children = (
-				F45285601B959A4300D3ECEE /* DouBanBookSDK */,
+				F4EDFDC61B995FC10082A5E4 /* DouBanBookSDK */,
 				F4BF964E1B93E4E500595D3F /* AppDelegate.swift */,
 				F4BF96501B93E4E500595D3F /* ViewController.swift */,
 				F4BF96861B94557200595D3F /* UIViewController+Alert.swift */,
@@ -136,6 +124,18 @@
 				F4BF96631B93E4E500595D3F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4EDFDC61B995FC10082A5E4 /* DouBanBookSDK */ = {
+			isa = PBXGroup;
+			children = (
+				F4EDFDC71B995FC10082A5E4 /* DBAnnotation.swift */,
+				F4EDFDC81B995FC10082A5E4 /* DBSession.swift */,
+				F4EDFDC91B995FC10082A5E4 /* DouBanAccount.swift */,
+				F4EDFDCA1B995FC10082A5E4 /* NetworkTool.swift */,
+				F4EDFDCB1B995FC10082A5E4 /* OauthLoginViewController.swift */,
+			);
+			path = DouBanBookSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,13 +238,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F45285671B959A4300D3ECEE /* DBSession.swift in Sources */,
+				F4EDFDCD1B995FC10082A5E4 /* DBSession.swift in Sources */,
 				F4BF96511B93E4E500595D3F /* ViewController.swift in Sources */,
-				F452856A1B959A4300D3ECEE /* OauthLoginViewController.swift in Sources */,
-				F45285691B959A4300D3ECEE /* NetworkTool.swift in Sources */,
-				F45285681B959A4300D3ECEE /* DouBanAccount.swift in Sources */,
+				F4EDFDD01B995FC10082A5E4 /* OauthLoginViewController.swift in Sources */,
+				F4EDFDCF1B995FC10082A5E4 /* NetworkTool.swift in Sources */,
+				F4EDFDCE1B995FC10082A5E4 /* DouBanAccount.swift in Sources */,
 				F4BF964F1B93E4E500595D3F /* AppDelegate.swift in Sources */,
-				F45285661B959A4300D3ECEE /* DBAnnotation.swift in Sources */,
+				F4EDFDCC1B995FC10082A5E4 /* DBAnnotation.swift in Sources */,
 				F4BF96871B94557200595D3F /* UIViewController+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

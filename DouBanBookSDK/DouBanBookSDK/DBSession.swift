@@ -79,8 +79,7 @@ class DBSession: NSObject {
             parameter["chapter"] = note.chapter!
         }
         
-        NetworkTool.sharedNetworkTool.request(.POST, url: url, parameter: parameter, successStatus: 201, complition: success)
-        
+        NetworkTool.sharedNetworkTool.request(.POST, url: url, parameter: parameter, successStatus: 201, success: success, fail: nil)
         
     }
     
@@ -101,7 +100,7 @@ class DBSession: NSObject {
         let urlPath = "https://api.douban.com/v2/book/annotation/\(note.id!)"
         let url = NSURL(string: urlPath)!
         
-        NetworkTool.sharedNetworkTool.request(.DELETE, url: url, parameter: nil, successStatus: 204, complition: success)
+        NetworkTool.sharedNetworkTool.request(.DELETE, url: url, parameter: nil, successStatus: 204, success: success, fail: nil)
         
     }
     
@@ -111,7 +110,7 @@ class DBSession: NSObject {
         let urlPath = "https://api.douban.com/v2/book/annotation/\(noteId)"
         let url = NSURL(string: urlPath)!
         
-        NetworkTool.sharedNetworkTool.request(.GET, url: url, parameter: nil, successStatus: 200, complition: success)
+        NetworkTool.sharedNetworkTool.request(.GET, url: url, parameter: nil, successStatus: 200, success: success, fail: nil)
         
         
     }
@@ -141,8 +140,20 @@ class DBSession: NSObject {
         // 在读状态
         parameter["status"] = "reading"
         
-        NetworkTool.sharedNetworkTool.request(.POST, url: url, parameter: parameter, successStatus: 201, complition: success)
+        NetworkTool.sharedNetworkTool.request(.POST, url: url, parameter: parameter, successStatus: 201, success: success, fail: nil)
         
+    }
+    
+    /// 根据ISBN搜索图书
+    func searchBookByISBN(isbn: String, success: successCallBack, fail: successCallBack) {
+        
+        client_secret = DBSession.authorization_code_parameter["client_secret"] as? String
+        
+        let urlPath = "https://api.douban.com/v2/book/isbn/\(isbn)?apikey=\(client_secret!)"
+        
+        let url = NSURL(string: urlPath)!
+        
+        NetworkTool.sharedNetworkTool.request(.GET, url: url, parameter: nil, successStatus: 200, success: success, fail: fail)
     }
 
 }

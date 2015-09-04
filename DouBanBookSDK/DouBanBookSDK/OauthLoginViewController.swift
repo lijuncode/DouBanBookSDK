@@ -120,16 +120,17 @@ class OauthLoginViewController: UIViewController, UIWebViewDelegate {
         parameters["grant_type"] = "authorization_code"
         parameters["code"] = code
         
-        NetworkTool.sharedNetworkTool.request(.POST, url: url, parameter: parameters, successStatus: 200) { (result, error) -> Void in
+        NetworkTool.sharedNetworkTool.request(.POST, url: url, parameter: parameters, successStatus: 200, success: { (result, error) -> Void in
             
             DouBanAccount.doubanAccount = DouBanAccount(dictionary: result!)
             
-                DBSession.sharedSession.changeAuthenticated()
+            DBSession.sharedSession.changeAuthenticated()
             
-                self.complition?()
-                        
-                self.close()
-        }
+            self.complition?()
+            
+            self.close()
+            
+        }, fail: nil)
         
     }
     

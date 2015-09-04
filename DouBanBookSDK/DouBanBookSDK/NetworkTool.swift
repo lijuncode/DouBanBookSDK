@@ -42,7 +42,7 @@ class NetworkTool: NSObject {
     }
     
     
-    func request(method: HTTPMethod, url: NSURL, parameter: [String : AnyObject]?, successStatus: Int, complition: finishCallBack ) {
+    func request(method: HTTPMethod, url: NSURL, parameter: [String : AnyObject]?, successStatus: Int, success: finishCallBack?, fail: finishCallBack?) {
         
         let request = NSMutableURLRequest(URL: url)
         var data: NSData?
@@ -57,12 +57,12 @@ class NetworkTool: NSObject {
         
         switch method {
         case .GET:
-            dataTaskWithRequest(request, successStatus: successStatus, success: complition)
+            dataTaskWithRequest(request, successStatus: successStatus, success: success, fail: fail)
             
         case .POST:
-            uploadTaskWithRequest(request, fromData: data, successStatus: successStatus, success: complition)
+            uploadTaskWithRequest(request, fromData: data, successStatus: successStatus, success: success, fail: fail)
         case .DELETE:
-            dataTaskWithRequest(request, successStatus: successStatus, success: complition)
+            dataTaskWithRequest(request, successStatus: successStatus, success: success, fail: fail)
             
         default:
             break
@@ -72,21 +72,24 @@ class NetworkTool: NSObject {
     }
     
     
-    private func dataTaskWithRequest(request: NSURLRequest,successStatus: Int, success: finishCallBack) {
+    private func dataTaskWithRequest(request: NSURLRequest,successStatus: Int, success: finishCallBack?, fail: finishCallBack?) {
         
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+            
+            let result = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0), error: nil) as? [String : AnyObject]
             
             let httpResp = response as? NSHTTPURLResponse
             
             if httpResp?.statusCode == successStatus {
                 
-                let result = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0), error: nil) as? [String : AnyObject]
-                
-                
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                    success(result: result, error: nil)
+                    success?(result: result, error: nil)
                 })
                 
+            }else {
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    fail?(result: result, error: error)
+                })
             }
             
         })
@@ -96,21 +99,25 @@ class NetworkTool: NSObject {
         
     }
     
-    private func uploadTaskWithRequest(request: NSURLRequest, fromData: NSData?, successStatus: Int, success: finishCallBack) {
+    private func uploadTaskWithRequest(request: NSURLRequest, fromData: NSData?, successStatus: Int, success: finishCallBack?, fail: finishCallBack?) {
         
        let task = session.uploadTaskWithRequest(request, fromData: fromData) { (data, response, error) -> Void in
         
             let httpResp = response as? NSHTTPURLResponse
         
+            let result = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0), error: nil) as? [String : AnyObject]
+        
             if httpResp?.statusCode == successStatus {
             
-                let result = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0), error: nil) as! [String : AnyObject]
-            
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                    success(result: result, error: nil)
+                    success?(result: result, error: nil)
                 })
             
-            }
+            }else {
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    fail?(result: result, error: error)
+                })
+        }
         
         }
         
