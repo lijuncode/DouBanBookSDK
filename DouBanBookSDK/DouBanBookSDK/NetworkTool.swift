@@ -97,7 +97,7 @@ class NetworkTool: NSObject {
             
             if data != nil && error == nil {
                 
-                let result = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0), error: nil) as! [String : AnyObject]
+                let result = (try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))) as! [String : AnyObject]
                 
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                     success(result: result, error: nil)
@@ -113,12 +113,12 @@ class NetworkTool: NSObject {
     // 从 Alamofire 偷了三个函数，目前只用了第一个
     private func buildParams(parameters: [String: AnyObject]) -> String {
         var components: [(String, String)] = []
-        for key in sorted(Array(parameters.keys), <) {
+        for key in Array(parameters.keys).sort(<) {
             let value: AnyObject! = parameters[key]
             components += self.queryComponents(key, value)
         }
         
-        return join("&", components.map{"\($0)=\($1)"} as [String])
+        return (components.map{"\($0)=\($1)"} as [String]).joinWithSeparator("&")
     }
     private func queryComponents(key: String, _ value: AnyObject) -> [(String, String)] {
         var components: [(String, String)] = []
@@ -131,7 +131,7 @@ class NetworkTool: NSObject {
                 components += queryComponents("\(key)", value)
             }
         } else {
-            components.extend([(escape(key), escape("\(value)"))])
+            components.appendContentsOf([(escape(key), escape("\(value)"))])
         }
         
         return components

@@ -30,7 +30,7 @@ class OauthLoginViewController: UIViewController, UIWebViewDelegate {
         
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -54,7 +54,7 @@ class OauthLoginViewController: UIViewController, UIWebViewDelegate {
         
         view.addSubview(webView)
         
-        webView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        webView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addConstraint(NSLayoutConstraint(item: webView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1, constant: 0))
         view.addConstraint(NSLayoutConstraint(item: webView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1, constant: 0))
@@ -84,14 +84,14 @@ class OauthLoginViewController: UIViewController, UIWebViewDelegate {
         let urlPath = request.URL!.absoluteString
         
         
-        let range = urlPath!.rangeOfString("code=")
+        let range = urlPath.rangeOfString("code=")
         
-        let errorRange = urlPath!.rangeOfString("error=")
+        let errorRange = urlPath.rangeOfString("error=")
         
         if let codeRange = range {
             
             
-            let codeString = urlPath!.substringFromIndex(codeRange.endIndex)
+            let codeString = urlPath.substringFromIndex(codeRange.endIndex)
             
                 
             loadAccessToken(codeString)

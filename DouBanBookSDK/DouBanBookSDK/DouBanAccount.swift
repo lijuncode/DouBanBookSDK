@@ -10,10 +10,11 @@ import Foundation
 
 let doubanPath: String = {
     
-    let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).last as! String
-    
-    return path.stringByAppendingPathComponent("DoubanAcount.plist")
-    
+  let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).last
+  let nsPath: NSString = path!
+  
+  return nsPath.stringByAppendingPathComponent("DoubanAcount.plist")
+  
     }()
 
 class DouBanAccount: NSObject, NSCoding {
@@ -70,7 +71,10 @@ class DouBanAccount: NSObject, NSCoding {
         
         doubanAccount = nil
         
-        NSFileManager.defaultManager().removeItemAtPath(doubanPath, error: nil)
+        do {
+            try NSFileManager.defaultManager().removeItemAtPath(doubanPath)
+        } catch _ {
+        }
         
     }
     
@@ -89,7 +93,7 @@ class DouBanAccount: NSObject, NSCoding {
     }
     
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         
         access_token = aDecoder.decodeObjectForKey("access_token") as? String
         refresh_token = aDecoder.decodeObjectForKey("refresh_token") as? String
